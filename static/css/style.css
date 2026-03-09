@@ -1,0 +1,32 @@
+:root {
+  --app-bg: #f4f7fb;
+  --card-radius: 16px;
+}
+
+body {
+  background: radial-gradient(circle at 0% 0%, #eef4ff 0, #f4f7fb 40%, #f8fafc 100%);
+  min-height: 100vh;
+}
+
+.navbar-brand {
+  letter-spacing: 0.3px;
+}
+
+.card {
+  border-radius: var(--card-radius);
+}
+
+.table > :not(caption) > * > * {
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+}
+
+.form-control,
+.input-group-text,
+.btn {
+  border-radius: 10px;
+}
+
+.btn-primary {
+  box-shadow: 0 8px 16px rgba(13, 110, 253, 0.18);
+}

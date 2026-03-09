@@ -1,17 +1,41 @@
+{% extends "base.html" %}
 
-<h1>Add Product</h1>
+{% block title %}Add Product | Product Catalogue{% endblock %}
 
-<form method="POST">
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8 col-lg-6">
+    <div class="card shadow-sm border-0">
+      <div class="card-body p-4 p-md-5">
+        <h1 class="h3 mb-2">Add Product</h1>
+        <p class="text-muted mb-4">Fill in the details to add a new product.</p>
 
-Name:<br>
-<input type="text" name="name"><br><br>
+        <form method="POST" class="needs-validation" novalidate>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="e.g. Wireless Mouse" required>
+          </div>
 
-Price:<br>
-<input type="number" name="price"><br><br>
+          <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <div class="input-group">
+              <span class="input-group-text">$</span>
+              <input type="number" class="form-control" id="price" name="price" min="0" step="0.01" placeholder="0.00" required>
+            </div>
+          </div>
 
-Description:<br>
-<textarea name="description"></textarea><br><br>
+          <div class="mb-4">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="4" placeholder="Brief product summary"></textarea>
+          </div>
 
-<button type="submit">Add</button>
-
-</form>
+          <div class="d-flex gap-2">
+            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary w-50">Cancel</a>
+            <button type="submit" class="btn btn-primary w-50">Add Product</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
