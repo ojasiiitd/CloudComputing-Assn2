@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 import sqlite3
 
 app = Flask(__name__)
+app.secret_key = "dev-secret-key"
 
 DB = "products.db"
 
@@ -31,12 +32,23 @@ def index():
 @app.route("/add", methods=["GET", "POST"])
 def add_product():
     if request.method == "POST":
-        name = request.form["name"]
-        price = request.form["price"]
-        description = request.form["description"]
+        name = request.form["name"].strip()
+        price_raw = request.form["price"].strip()
+        description = request.form["description"].strip()
 
-        if not name or not price:
-            return "Invalid input"
+        if not name or not price_raw:
+            flash("Name and price are required.", "danger")
+            return render_template("add_product.html", form_data=request.form)
+
+        try:
+            price = float(price_raw)
+        except ValueError:
+            flash("Price must be a valid number.", "danger")
+            return render_template("add_product.html", form_data=request.form)
+
+        if price < 0:
+            flash("Price cannot be negative.", "danger")
+            return render_template("add_product.html", form_data=request.form)
 
         conn = sqlite3.connect(DB)
         c = conn.cursor()
@@ -49,7 +61,7 @@ def add_product():
 
         return redirect("/")
 
-    return render_template("add_product.html")
+    return render_template("add_product.html", form_data={})
 
 
 if __name__ == "__main__":

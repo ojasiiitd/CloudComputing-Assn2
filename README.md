@@ -37,29 +37,12 @@ This helps ensure reliability and easier maintenance of the application.
 
 ## Architecture Decisions
 
-### Web Framework: Flask (Python)
-
-Flask was chosen as the backend framework because:
-- It is lightweight and easy to develop with
-- Requires minimal configuration
-- Suitable for small web applications and prototypes
-- Easy to deploy on cloud platforms
-
-### Database: SQLite
-
-Reasons for choosing SQLite:
-- Lightweight and serverless database
-- Simple integration with Python
-- Suitable for small applications with moderate data requirements
-
-### Cloud Platform: Microsoft Azure
-
-Microsoft Azure was selected because:
-- It provides fully managed cloud hosting
-- Offers easy deployment through Azure App Service
-- Provides built-in monitoring and logging tools
-- Allows quick setup without complex infrastructure configuration
+| Decision | Alternatives | Choice | Justification |
+|---------|-------------|--------|--------------|
+| Web Framework | Django, Node.js (Express), Flask | Flask | Lightweight and easy to develop with, requires minimal configuration, suitable for small web applications and prototypes, and easy to deploy on cloud platforms. |
+| Database | MySQL, PostgreSQL, NoSQL (MongoDB), SQLite | SQLite | Lightweight and serverless database, simple integration with Python, suitable for small applications with moderate data requirements, and requires no additional database server configuration. |
+| Cloud Platform | AWS, Google Cloud Platform (GCP), Microsoft Azure | Microsoft Azure | Provides fully managed cloud hosting through Azure App Service, offers built-in monitoring and logging tools, and allows quick deployment without complex infrastructure configuration. |
 
 ## Architecture Diagram
 
-![Architecture Diagram](ArchDiagram.jpeg)
+![Architecture Diagram](ArchDiagram.png)
